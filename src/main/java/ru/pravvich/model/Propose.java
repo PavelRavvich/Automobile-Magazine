@@ -77,11 +77,11 @@ public class Propose implements Serializable {
         this.idAuhtor = idAuhtor;
     }
 
-    public boolean isSaleStatus() {
+    public boolean getSold() {
         return sold;
     }
 
-    public void setSaleStatus(boolean sold) {
+    public void setSold(boolean sold) {
         this.sold = sold;
     }
 

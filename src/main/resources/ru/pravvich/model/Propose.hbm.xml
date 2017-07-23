@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
+
+    <class name="ru.pravvich.model.Propose" table="tasks">
+
+        <id name="id" column="id" type="integer">
+            <generator class="identity"/>
+        </id>
+
+        <property name="idAuhtor" column="id_auhtor" type="integer"/>
+        <property name="sold" column="sold" type="boolean"/>
+        <property name="description" column="description" type="text"/>
+        <property name="mark" column="mark" type="text"/>
+        <property name="model" column="model" type="text"/>
+    </class>
+</hibernate-mapping>

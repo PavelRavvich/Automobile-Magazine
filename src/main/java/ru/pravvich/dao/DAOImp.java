@@ -31,11 +31,12 @@ public class DAOImp implements DAO {
     }
 
     @Override
-    public User getUser(String login, String password) {
+    public User getUser(final String login, final String password) {
 
         User result;
 
-        final String hql = "select u from User u where u.login = :login and u.password = :password";
+        final String hql = String.format("%s%s", "select u from User u ",
+                "where u.login = :login and u.password = :password");
 
         try (final Session session = factory.get().openSession()) {
 
@@ -49,7 +50,7 @@ public class DAOImp implements DAO {
     }
 
     @Override
-    public Propose getProposeId(int id) {
+    public Propose getProposeId(final int id) {
 
         Propose result;
 

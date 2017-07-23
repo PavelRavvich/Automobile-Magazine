@@ -5,13 +5,13 @@
 
 <hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping">
 
-    <class name="ru.pravvich.model.User" table="tasks">
+    <class name="ru.pravvich.model.User" table="users">
 
         <id name="id" column="id" type="integer">
             <generator class="identity"/>
         </id>
 
-        <property name="login" column="login" type="text"/>
-        <property name="password" column="password" type="text"/>
+        <property name="login" column="login"/>
+        <property name="password" column="password"/>
     </class>
 </hibernate-mapping>

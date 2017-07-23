@@ -14,9 +14,9 @@ public class Propose implements Serializable {
      */
     private int id;
     /**
-     * User id.
+     * Propose id.
      */
-    private int idAuhtor;
+    private User auhtor;
     /**
      * Sale status. False(default) - not sold. True - sold.
      */
@@ -42,19 +42,14 @@ public class Propose implements Serializable {
     /**
      * Default constructor.
      *
-     * @param id of propose.
-     * @param idAuhtor of user.
      * @param description of propose.
      * @param mark of propose.
      * @param model of propose.
      */
-    public Propose(final int id,
-                   final int idAuhtor,
-                   final String description,
+    public Propose(final String description,
                    final String mark,
                    final String model) {
-        this.id = id;
-        this.idAuhtor = idAuhtor;
+
         this.description = description;
         this.mark = mark;
         this.model = model;
@@ -69,12 +64,16 @@ public class Propose implements Serializable {
         this.id = id;
     }
 
-    public int getIdAuhtor() {
-        return idAuhtor;
+    public User getAuhtor() {
+        return auhtor;
     }
 
-    public void setIdAuhtor(int idAuhtor) {
-        this.idAuhtor = idAuhtor;
+    public void setAuhtor(User auhtor) {
+        this.auhtor = auhtor;
+    }
+
+    public boolean isSold() {
+        return sold;
     }
 
     public boolean getSold() {
@@ -113,7 +112,7 @@ public class Propose implements Serializable {
     public String toString() {
         return "Propose{" +
                 "id=" + id +
-                ", idAuhtor=" + idAuhtor +
+                ", auhtor=" + auhtor +
                 ", sold=" + sold +
                 ", description='" + description + '\'' +
                 ", mark='" + mark + '\'' +

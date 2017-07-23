@@ -1,3 +1,5 @@
+CREATE DATABASE auto_mag ENCODING 'UTF8';
+
 CREATE TABLE IF NOT EXISTS users (
      id SERIAL NOT NULL ,
      login TEXT UNIQUE NOT NULL ,
@@ -23,5 +25,10 @@ VALUES (DEFAULT ,'test','test') RETURNING id;
 -- Select user by pair login password.
 SELECT id FROM users WHERE login = 'test' AND password = 'test';
 
+-- Add test propose and get id.
 INSERT INTO propose (id, id_auhtor, sold, description, mark, model)
 VALUES (DEFAULT, '1', FALSE, 'test_desc', 'audi', 'a8') RETURNING id;
+
+-- Select propose by propose id.
+SELECT p.id_auhtor, p.sold, p.description, p.mark, p.model
+FROM propose AS p WHERE id = '1';

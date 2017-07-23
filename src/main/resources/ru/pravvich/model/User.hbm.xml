@@ -13,5 +13,6 @@
 
         <property name="login" column="login"/>
         <property name="password" column="password"/>
+
     </class>
 </hibernate-mapping>

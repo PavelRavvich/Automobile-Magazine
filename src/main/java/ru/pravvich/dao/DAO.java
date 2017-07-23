@@ -1,4 +1,4 @@
 package ru.pravvich.dao;
 
-public interface DAO {
+public interface UserDAO {
 }

@@ -10,11 +10,18 @@
         <id name="id" column="id" type="integer">
             <generator class="identity"/>
         </id>
-
-        <property name="idAuhtor" column="id_auhtor"/>
+        
         <property name="sold" column="sold"/>
         <property name="description" column="description"/>
         <property name="mark" column="mark"/>
         <property name="model" column="model"/>
+
+        <!--1:имя поля в классе, 2:колонка(вторичный ключ в Propose), 3:класс-->
+        <many-to-one name="auhtor"
+                     column ="id_auhtor"
+                     class="ru.pravvich.model.User">
+
+
+        </many-to-one>
     </class>
 </hibernate-mapping>

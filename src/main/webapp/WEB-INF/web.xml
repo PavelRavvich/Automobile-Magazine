@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
@@ -26,4 +30,27 @@
         <filter-name>EncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+    <!--Auth Filter-->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>ru.pravvich.servlet.AuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--news-->
+    <servlet>
+        <servlet-name>AllProposes</servlet-name>
+        <servlet-class>ru.pravvich.servlet.ProposesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AllProposes</servlet-name>
+        <url-pattern>/all_proposes</url-pattern>
+    </servlet-mapping>
+
 </web-app>

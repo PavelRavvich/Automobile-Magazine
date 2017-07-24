@@ -58,7 +58,7 @@ public class DAOImp implements DAO {
 
             session.beginTransaction();
 
-            result = session.get(Propose.class, 1);
+            result = session.get(Propose.class, id);
         }
 
         return result;

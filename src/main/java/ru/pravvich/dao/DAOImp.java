@@ -70,7 +70,8 @@ public class DAOImp implements DAO {
 
         List<Propose> result;
 
-        final String query = "select p from Propose p where p.id > 0";
+        final String query =
+                "select p from Propose p join fetch p.auhtor where p.id > 0";
 
         try (final Session session = factory.get().openSession()) {
 

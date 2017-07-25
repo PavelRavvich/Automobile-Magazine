@@ -7,6 +7,7 @@ import org.hibernate.query.Query;
 import ru.pravvich.model.Propose;
 import ru.pravvich.model.User;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
@@ -59,6 +60,26 @@ public class DAOImp implements DAO {
             session.beginTransaction();
 
             result = session.get(Propose.class, id);
+        }
+
+        return result;
+    }
+
+    @Override
+    public List<Propose> getAllProposes() {
+
+        List<Propose> result;
+
+        final String query = "select p from Propose p where p.id > 0";
+
+        try (final Session session = factory.get().openSession()) {
+
+            final Query<Propose> id = session.createQuery(query, Propose.class);
+
+            final Transaction transaction = session.beginTransaction();
+
+            result = id.getResultList();
+            transaction.commit();
         }
 
         return result;

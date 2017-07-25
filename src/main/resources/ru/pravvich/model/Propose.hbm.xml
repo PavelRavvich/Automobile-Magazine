@@ -18,6 +18,7 @@
 
         <!--1:имя поля в классе, 2:колонка(вторичный ключ в Propose), 3:класс-->
         <many-to-one name="auhtor"
+                     lazy="false"
                      column ="id_auhtor"
                      class="ru.pravvich.model.User">
 

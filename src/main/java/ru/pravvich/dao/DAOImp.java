@@ -1,5 +1,6 @@
 package ru.pravvich.dao;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -60,6 +61,8 @@ public class DAOImp implements DAO {
             session.beginTransaction();
 
             result = session.get(Propose.class, id);
+
+            Hibernate.initialize(result.getAuhtor());
         }
 
         return result;

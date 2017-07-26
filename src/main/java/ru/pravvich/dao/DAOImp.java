@@ -52,7 +52,7 @@ public class DAOImp implements DAO {
     }
 
     @Override
-    public Propose getProposeId(final int id) {
+    public Propose getProposeById(final int id) {
 
         Propose result;
 

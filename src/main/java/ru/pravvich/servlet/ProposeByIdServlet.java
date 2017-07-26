@@ -18,7 +18,7 @@ public class ProposeByIdServlet extends HttpServlet {
 
         final DAO dao = (DAO) getServletContext().getAttribute("dao");
 
-        final Propose propose = dao.getProposeId(pId);
+        final Propose propose = dao.getProposeById(pId);
 
         req.setAttribute("propose", propose);
 

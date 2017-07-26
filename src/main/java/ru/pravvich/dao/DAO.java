@@ -22,7 +22,7 @@ public interface DAO {
      * @param id of Propose.
      * @return Propose with appropriate id.
      */
-    Propose getProposeId(int id);
+    Propose getProposeById(int id);
 
     /**
      * Get all Proposes which contain in database.

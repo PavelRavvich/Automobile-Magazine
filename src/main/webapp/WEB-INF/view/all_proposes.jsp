@@ -15,10 +15,24 @@
     </script>
 </head>
 <body>
-all proposes
-<%-- <c:out value="${requestScope.serverAnswer}"/> 
-  <c:forEach var="user" items="${requestScope.allUsers}">
-      <li>Id: <c:out value="${user.id}"/></li>
-  </c:forEach>--%>
+<h2>All Proposes: </h2><br>
+
+    <form method="get" action="get_all_proposes/get_propose_by_id">
+        <c:forEach var="propose" items="${requestScope.allProposes}">
+
+            <ul>
+
+                <li>Model: <c:out value="${propose.model}"/></li>
+                <li>Mark: <c:out value="${propose.mark}"/></li>
+                <li>Sold: <c:out value="${propose.sold}"/></li>
+                <input name="pId" hidden type="number" value="${propose.id}">
+                <input type="submit" value="More">
+                <hr>
+
+            </ul>
+
+        </c:forEach>
+    </form>
+
 </body>
 </html>

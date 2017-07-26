@@ -33,7 +33,7 @@ public class AuthFilter implements Filter {
             path = req.getServletPath();
 
             if (path.equals("/index.jsp")) {
-                path = "all_proposes";
+                path = "get_all_proposes";
             }
 
         } else if (userIsRegistered(req)) {

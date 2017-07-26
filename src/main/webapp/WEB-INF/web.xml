@@ -50,7 +50,17 @@
 
     <servlet-mapping>
         <servlet-name>AllProposes</servlet-name>
-        <url-pattern>/all_proposes</url-pattern>
+        <url-pattern>/get_all_proposes</url-pattern>
     </servlet-mapping>
 
+    <!--Get Propose By Id-->
+    <servlet>
+        <servlet-name>GetProposeById</servlet-name>
+        <servlet-class>ru.pravvich.servlet.GetterProposeById</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetProposeById</servlet-name>
+        <url-pattern>/get_all_proposes/get_propose_by_id</url-pattern>
+    </servlet-mapping>
 </web-app>

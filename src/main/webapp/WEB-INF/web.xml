@@ -56,7 +56,7 @@
     <!--Get Propose By Id-->
     <servlet>
         <servlet-name>GetProposeById</servlet-name>
-        <servlet-class>ru.pravvich.servlet.GetterProposeById</servlet-class>
+        <servlet-class>ru.pravvich.servlet.ProposeByIdServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>

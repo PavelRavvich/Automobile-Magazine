@@ -15,24 +15,30 @@
     </script>
 </head>
 <body>
+
 <h2>All Proposes: </h2><br>
 
-    <form method="get" action="get_all_proposes/get_propose_by_id">
-        <c:forEach var="propose" items="${requestScope.allProposes}">
+<form method="get" action="get_all_proposes/add_propose">
+    <input type="submit" value="Add propose">
+</form>
+<hr>
 
-            <ul>
+<form method="get" action="get_all_proposes/get_propose_by_id">
+    <c:forEach var="propose" items="${requestScope.allProposes}">
 
-                <li>Model: <c:out value="${propose.model}"/></li>
-                <li>Mark: <c:out value="${propose.mark}"/></li>
-                <li>Sold: <c:out value="${propose.sold}"/></li>
-                <input name="pId" hidden type="number" value="${propose.id}">
-                <input type="submit" value="More">
-                <hr>
+        <ul>
 
-            </ul>
+            <li>Model: <c:out value="${propose.model}"/></li>
+            <li>Mark: <c:out value="${propose.mark}"/></li>
+            <li>Sold: <c:out value="${propose.sold}"/></li>
+            <input name="pId" hidden type="number" value="${propose.id}">
+            <input type="submit" value="More">
+            <hr>
 
-        </c:forEach>
-    </form>
+        </ul>
+
+    </c:forEach>
+</form>
 
 </body>
 </html>

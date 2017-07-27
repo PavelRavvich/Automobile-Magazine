@@ -25,28 +25,30 @@ public class AuthFilter implements Filter {
 
         final HttpSession session = req.getSession(false);
 
-        String path = "/index.jsp";
+        String path;
 
-
-        if (session != null && sessionIsFilled(session)) {
-
-            path = req.getServletPath();
-
-            if (path.equals("/index.jsp")) {
-                path = "get_all_proposes";
-            }
-
-        } else if (userIsRegistered(req)) {
+        if (session != null && sessionIsExist(session)) {
 
             path = req.getServletPath();
 
-            initSession(req);
+            if (path.contains("index.jsp")) path = "/get_all_proposes";
+
+        } else if (userIsRegisteredDB(req)) {
+
+            path = "/get_all_proposes";
+
+            createSession(req);
+
+        } else {
+
+            // If user not exist in DB and not have a session go to sign in.
+            path = "/index.jsp";
         }
 
         req.getRequestDispatcher(path).forward(req, resp);
     }
 
-    private boolean userIsRegistered(final HttpServletRequest req) {
+    private boolean userIsRegisteredDB(final HttpServletRequest req) {
 
         final String login = req.getParameter("login");
         final String password = req.getParameter("password");
@@ -60,7 +62,7 @@ public class AuthFilter implements Filter {
         return user != null;
     }
 
-    private void initSession(final HttpServletRequest req) {
+    private void createSession(final HttpServletRequest req) {
 
         final HttpSession session = req.getSession();
 
@@ -72,7 +74,7 @@ public class AuthFilter implements Filter {
     }
 
 
-    private boolean sessionIsFilled(final HttpSession session) {
+    private boolean sessionIsExist(final HttpSession session) {
 
         final String loginSes = (String) session.getAttribute("login");
         final String passSes = (String) session.getAttribute("password");

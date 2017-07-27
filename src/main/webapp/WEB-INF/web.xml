@@ -63,4 +63,15 @@
         <servlet-name>GetProposeById</servlet-name>
         <url-pattern>/get_all_proposes/get_propose_by_id</url-pattern>
     </servlet-mapping>
+
+    <!---->
+    <servlet>
+        <servlet-name>AddPropose</servlet-name>
+        <servlet-class>ru.pravvich.servlet.AddProposeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddPropose</servlet-name>
+        <url-pattern>/get_all_proposes/add_propose</url-pattern>
+    </servlet-mapping>
 </web-app>

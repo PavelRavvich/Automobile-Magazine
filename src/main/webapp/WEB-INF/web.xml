@@ -15,6 +15,13 @@
         </jsp-property-group>
     </jsp-config>
 
+    <!--Cleaner of temp dir for uploading files-->
+    <listener>
+        <listener-class>
+            org.apache.commons.fileupload.servlet.FileCleanerCleanup
+        </listener-class>
+    </listener>
+
     <!--Set UTF8 Encoding for all servlets-->
     <filter>
         <filter-name>EncodingFilter</filter-name>

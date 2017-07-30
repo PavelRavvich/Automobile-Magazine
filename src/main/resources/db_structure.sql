@@ -14,9 +14,13 @@ CREATE TABLE IF NOT EXISTS propose (
      description TEXT NOT NULL ,
      mark TEXT NOT NULL ,
      model TEXT NOT NULL ,
+     image BYTEA,
      PRIMARY KEY (id),
      FOREIGN KEY (id_auhtor) REFERENCES users (id)
 );
+
+-- Add image byte array.
+UPDATE propose SET image = (?) WHERE id = 1;
 
 -- Add test user and get id.
 INSERT INTO users (id, login, password)

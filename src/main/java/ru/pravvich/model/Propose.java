@@ -36,24 +36,43 @@ public class Propose implements Serializable {
     /**
      * Constructor for Hibernate.
      */
+    private byte[] image;
+
+    /**
+     * Byte representation image.
+     */
     public Propose() {
     }
 
     /**
      * Default constructor.
      *
+     * @param author      of propose.
+     * @param mark        of propose.
+     * @param model       of propose.
      * @param description of propose.
-     * @param mark of propose.
-     * @param model of propose.
+     * @param image       of propose.
      */
-    public Propose(final String description,
+    public Propose(final User author,
                    final String mark,
-                   final String model) {
+                   final String model,
+                   final String description,
+                   final byte[] image) {
 
+        this.auhtor = author;
         this.description = description;
         this.mark = mark;
         this.model = model;
         this.sold = false;
+        this.image = image;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public int getId() {

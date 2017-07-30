@@ -15,6 +15,7 @@
         <property name="description" column="description"/>
         <property name="mark" column="mark"/>
         <property name="model" column="model"/>
+        <property name="image" column="image"/>
 
         <!--1:имя поля в классе, 2:колонка(вторичный ключ в Propose), 3:класс-->
         <many-to-one name="auhtor"

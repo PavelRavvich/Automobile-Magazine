@@ -3,6 +3,9 @@ package ru.pravvich.servlet;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import ru.pravvich.dao.DAO;
+import ru.pravvich.model.Propose;
+import ru.pravvich.model.User;
 import ru.pravvich.util.FileReceiver;
 import ru.pravvich.util.TextReceiver;
 import ru.pravvich.util.UploadFactory;
@@ -12,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -33,24 +37,34 @@ public class AddProposeServlet extends HttpServlet {
 
         // Parse the request
         try {
-            List<FileItem> items = upload.parseRequest(req);
+            final List<FileItem> items = upload.parseRequest(req);
 
-            File file = new File("/Users/MyMac/Desktop/im.jpg");
+            final byte[] image = new FileReceiver().receive(items);
 
-            final byte[] receive = new FileReceiver().receive(items);
+            final Map<String, String> param = new TextReceiver().receive(items);
 
-            final Map<String, String> text = new TextReceiver().receive(items);
+            final DAO dao = (DAO) getServletContext().getAttribute("dao");
 
-            for (String s : text.values()) System.out.println(s);
+            final Propose propose = new Propose(
+                    new User(getAuthorId(req)),
+                    param.get("mark"),
+                    param.get("model"),
+                    param.get("description"),
+                    image);
 
-            Files.write(file.toPath(), receive);
+            dao.addPropose(propose);
+
+            System.out.println(propose);
 
         } catch (FileUploadException e) {
             e.printStackTrace();
         }
     }
 
-
+    private int getAuthorId(HttpServletRequest req) {
+        final HttpSession session = req.getSession(false);
+        return  (int) session.getAttribute("id");
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

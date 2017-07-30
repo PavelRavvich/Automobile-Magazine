@@ -2,7 +2,7 @@ package ru.pravvich.servlet;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import ru.pravvich.dao.DAOImp;
+import ru.pravvich.dao.DAOImpl;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -25,7 +25,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
-        final DAOImp dao = new DAOImp(new AtomicReference<>(factory));
+        final DAOImpl dao = new DAOImpl(new AtomicReference<>(factory));
 
         sce.getServletContext().setAttribute("dao", dao);
     }

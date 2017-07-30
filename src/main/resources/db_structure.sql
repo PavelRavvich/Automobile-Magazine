@@ -36,3 +36,10 @@ VALUES (DEFAULT, '1', FALSE, 'test_desc', 'audi', 'a8') RETURNING id;
 -- Select propose by propose id.
 SELECT p.id_auhtor, p.sold, p.description, p.mark, p.model
 FROM propose AS p WHERE id = '1';
+
+-- For convenient view propose in bash select with restriction length values.
+select id, id_auhtor, sold, description, mark, model,
+    substring(image from 0 for 5)
+
+    AS cuted_img from propose
+    where id = '?';

@@ -54,8 +54,6 @@ public class AddProposeServlet extends HttpServlet {
 
             dao.addPropose(propose);
 
-            System.out.println(propose);
-
         } catch (FileUploadException e) {
             e.printStackTrace();
         }

@@ -30,4 +30,9 @@ public interface DAO {
      * @return all proposes.
      */
     List<Propose> getAllProposes();
+
+    /**
+     * Addition new propose.
+     */
+    void addPropose(Propose propose);
 }

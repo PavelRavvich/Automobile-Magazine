@@ -15,9 +15,9 @@ import java.util.concurrent.atomic.AtomicReference;
  * Author : Pavel Ravvich.
  * Created : 23.07.17.
  * <p>
- * DAOImp
+ * DAOImpl
  */
-public class DAOImp implements DAO {
+public class DAOImpl implements DAO {
     /**
      * Connection factory to database.
      */
@@ -28,7 +28,7 @@ public class DAOImp implements DAO {
      *
      * @param factory of connection to database.
      */
-    public DAOImp(final AtomicReference<SessionFactory> factory) {
+    public DAOImpl(final AtomicReference<SessionFactory> factory) {
         this.factory = factory;
     }
 
@@ -88,4 +88,17 @@ public class DAOImp implements DAO {
 
         return result;
     }
+
+    @Override
+    public void addPropose(final Propose propose) {
+        try (final Session session = factory.get().openSession()) {
+
+            session.beginTransaction();
+
+            session.save(propose);
+
+            session.getTransaction().commit();
+        }
+    }
+
 }

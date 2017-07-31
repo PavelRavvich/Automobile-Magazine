@@ -81,4 +81,26 @@
         <servlet-name>AddPropose</servlet-name>
         <url-pattern>/get_all_proposes/add_propose</url-pattern>
     </servlet-mapping>
+
+    <!--Get all marks servlet-->
+    <servlet>
+        <servlet-name>GetAllMarks</servlet-name>
+        <servlet-class>ru.pravvich.servlet.GetAllMarksServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetAllMarks</servlet-name>
+        <url-pattern>/get_all_proposes/get_all_marks</url-pattern>
+    </servlet-mapping>
+
+    <!--Get models by mark-->
+    <servlet>
+        <servlet-name>GetModelByMark</servlet-name>
+        <servlet-class>ru.pravvich.servlet.GetModelByMarkServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetModelByMark</servlet-name>
+        <url-pattern>/get_all_proposes/get_model_by_mark</url-pattern>
+    </servlet-mapping>
 </web-app>

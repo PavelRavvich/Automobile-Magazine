@@ -7,12 +7,14 @@
 <html>
 <head>
     <title>Title</title>
-    <style type="">
-        <%--<%@include file="" %>--%>
-    </style>
-    <script type="">
-        <%--<%@include file="" %>--%>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script type="text/javascript">
+        <%@include file="/WEB-INF/js/propose_filter.js" %>
     </script>
+
+    <%--Jquery connection--%>
+
 </head>
 <body>
 
@@ -21,6 +23,26 @@
 <form method="get" action="get_all_proposes/add_propose">
     <input type="submit" value="Add propose">
 </form>
+<hr>
+
+<form method="get" action="get_all_proposes/get_all_marks">
+
+    <div>
+        <select id="mark" name="mark">
+            <option value="">Select mark</option>
+        </select>
+    </div>
+
+    <div>
+        <select id="model" name="model">
+            <option value="">Select model</option>
+        </select>
+    </div>
+
+    <button type="submit">Select</button>
+
+</form>
+
 <hr>
 
     <c:forEach var="propose" items="${requestScope.allProposes}">

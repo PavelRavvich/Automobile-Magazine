@@ -1,6 +1,10 @@
 package ru.pravvich.model;
 
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
+
+import static org.apache.commons.codec.binary.Base64.encodeBase64;
 
 /**
  * Author : Pavel Ravvich.
@@ -37,6 +41,10 @@ public class Propose implements Serializable {
      * Constructor for Hibernate.
      */
     private byte[] image;
+    /**
+     * For representation in jsp. Not using in ORM descriptors.
+     */
+    private String base64ImageFile;
 
     /**
      * Byte representation image.
@@ -65,6 +73,23 @@ public class Propose implements Serializable {
         this.model = model;
         this.sold = false;
         this.image = image;
+    }
+
+    public String getBase64ImageFile() {
+
+        if (base64ImageFile != null) return base64ImageFile;
+
+        if (image == null) return "";
+
+        try {
+
+            return base64ImageFile = new String(encodeBase64(image), "UTF-8");
+
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public byte[] getImage() {
@@ -136,6 +161,7 @@ public class Propose implements Serializable {
                 ", description='" + description + '\'' +
                 ", mark='" + mark + '\'' +
                 ", model='" + model + '\'' +
+                ", image=" + "byte[" + image + "]" +
                 '}';
     }
 }

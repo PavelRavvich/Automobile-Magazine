@@ -20,11 +20,11 @@
 
         <c:set var="propose" value="${requestScope.propose}"/>
 
-
-        <li>auhtor: <c:out value="${propose.auhtor.login}"/></li>
-        <li>mark: <c:out value="${propose.mark}"/></li>
-        <li>model: <c:out value="${propose.model}"/></li>
-        <li>description: <c:out value="${propose.description}"/></li>
+        <img alt="img" src="data:image/png;base64,${propose.base64ImageFile}"/>
+        <li>Author: <c:out value="${propose.auhtor.login}"/></li>
+        <li>Mark: <c:out value="${propose.mark}"/></li>
+        <li>Model: <c:out value="${propose.model}"/></li>
+        <li>Description: <c:out value="${propose.description}"/></li>
         <form method="get" action="../">
             <input type="submit"  value="All proposes">
         </form>

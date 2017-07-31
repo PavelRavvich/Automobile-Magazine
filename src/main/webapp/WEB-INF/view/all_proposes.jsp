@@ -23,7 +23,6 @@
 </form>
 <hr>
 
-<form method="get" action="get_all_proposes/get_propose_by_id">
     <c:forEach var="propose" items="${requestScope.allProposes}">
 
         <ul>
@@ -32,13 +31,12 @@
             <li>Mark: <c:out value="${propose.mark}"/></li>
             <li>Sold: <c:out value="${propose.sold}"/></li>
             <input name="pId" hidden type="number" value="${propose.id}">
-            <input type="submit" value="More">
+            <a href="get_all_proposes/get_propose_by_id?pId=${propose.id}">More</a>
             <hr>
 
         </ul>
 
     </c:forEach>
-</form>
 
 </body>
 </html>

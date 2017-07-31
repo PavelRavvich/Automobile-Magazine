@@ -101,4 +101,38 @@ public class DAOImpl implements DAO {
         }
     }
 
+    @Override
+    public List<String> getMarks() {
+
+        List<String> result;
+
+        final String hq = "select DISTINCT p.mark from Propose p";
+
+        try (final Session session = factory.get().openSession()) {
+
+            result = session.createQuery(hq, String.class).getResultList();
+
+        }
+
+        return result;
+    }
+
+    @Override
+    public List<String> getModelsByMark(final String mark) {
+
+        List<String> result;
+
+        final String hq =
+                "select DISTINCT p.model from Propose p where p.mark =:mark";
+
+        try (final Session session = factory.get().openSession()) {
+
+            result = session.createQuery(hq, String.class)
+                    .setParameter("mark", mark)
+                    .getResultList();
+
+        }
+
+        return result;
+    }
 }

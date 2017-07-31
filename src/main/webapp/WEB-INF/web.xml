@@ -71,7 +71,7 @@
         <url-pattern>/get_all_proposes/get_propose_by_id</url-pattern>
     </servlet-mapping>
 
-    <!---->
+    <!--Add propose with image-->
     <servlet>
         <servlet-name>AddPropose</servlet-name>
         <servlet-class>ru.pravvich.servlet.AddProposeServlet</servlet-class>

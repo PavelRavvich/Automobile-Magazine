@@ -25,16 +25,16 @@
 </form>
 <hr>
 
-<form method="get" action="get_all_proposes/get_all_marks">
+<form method="get" action="...">
 
     <div>
-        <select id="mark" name="mark">
+        <select id="mark" name="mark" data-url="get_all_proposes/get_all_marks">
             <option value="">Select mark</option>
         </select>
     </div>
 
     <div>
-        <select id="model" name="model">
+        <select id="model" name="model" data-url="get_all_proposes/get_model_by_mark">
             <option value="">Select model</option>
         </select>
     </div>

@@ -31,7 +31,7 @@ SELECT id FROM users WHERE login = 'test' AND password = 'test';
 
 -- Add test propose and get id.
 INSERT INTO propose (id, id_auhtor, sold, description, mark, model)
-VALUES (DEFAULT, '1', FALSE, 'test_desc', 'audi', 'a8') RETURNING id;
+VALUES (DEFAULT, '1', FALSE, 'dfghdf', 'dfgh', 'a45') RETURNING id;
 
 -- Select propose by propose id.
 SELECT p.id_auhtor, p.sold, p.description, p.mark, p.model

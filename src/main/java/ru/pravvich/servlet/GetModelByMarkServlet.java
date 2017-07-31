@@ -17,7 +17,9 @@ public class GetModelByMarkServlet extends HttpServlet {
 
         final DAO dao = (DAO) getServletContext().getAttribute("dao");
 
-        final List<String> models = dao.getModelsByMark(req.getParameter("mark"));
+        final String mark = req.getParameter("mark");
+
+        final List<String> models = dao.getModelsByMark(mark);
 
         final String jsonModel = new Gson().toJson(models);
 

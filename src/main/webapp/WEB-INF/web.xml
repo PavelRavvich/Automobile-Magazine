@@ -103,4 +103,15 @@
         <servlet-name>GetModelByMark</servlet-name>
         <url-pattern>/get_all_proposes/get_model_by_mark</url-pattern>
     </servlet-mapping>
+
+    <!--Select propose by mark and model-->
+    <servlet>
+        <servlet-name>SelectProposeByMarkModel</servlet-name>
+        <servlet-class>ru.pravvich.servlet.SelectProposeServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SelectProposeByMarkModel</servlet-name>
+        <url-pattern>/get_all_proposes/select_propose_by_markmodel</url-pattern>
+    </servlet-mapping>
 </web-app>

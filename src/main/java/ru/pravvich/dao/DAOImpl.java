@@ -11,6 +11,8 @@ import ru.pravvich.model.User;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
+import static java.lang.String.format;
+
 /**
  * Author : Pavel Ravvich.
  * Created : 23.07.17.
@@ -37,7 +39,7 @@ public class DAOImpl implements DAO {
 
         User result;
 
-        final String hql = String.format("%s%s", "select u from User u ",
+        final String hql = format("%s%s", "select u from User u ",
                 "where u.login = :login and u.password = :password");
 
         try (final Session session = factory.get().openSession()) {
@@ -131,6 +133,29 @@ public class DAOImpl implements DAO {
                     .setParameter("mark", mark)
                     .getResultList();
 
+        }
+
+        return result;
+    }
+
+    public List<Propose> select(final String mark, final String model) {
+
+        List<Propose> result;
+
+        final String hq = format("%s%s",
+                "select p from Propose p ",
+                "where p.mark =:mark and p.model =:model");
+
+        try (Session session = factory.get().openSession()) {
+
+            result = session.createQuery(hq, Propose.class)
+                    .setParameter("mark", mark)
+                    .setParameter("model", model)
+                    .getResultList();
+
+            result.stream()
+                    .map(Propose::getAuhtor)
+                    .forEach(Hibernate::initialize);
         }
 
         return result;

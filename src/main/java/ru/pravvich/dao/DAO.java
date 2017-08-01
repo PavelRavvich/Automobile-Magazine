@@ -43,4 +43,9 @@ public interface DAO {
      * Get all models corresponded mark of Car.
      */
     List<String> getModelsByMark(String mark);
+
+    /**
+     * Select all propose with valid mark and model.
+     */
+    List<Propose> select(final String mark, final String model);
 }

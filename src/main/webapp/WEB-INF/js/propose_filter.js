@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     $('#mark').focus(function(event) {
 
@@ -15,8 +13,6 @@ $(document).ready(function () {
 
                 var select = $('#mark');
 
-                // select.find('option').remove();
-
                 $.each(data, function(index, value) {
 
                     var optionMark = $('<option>');
@@ -28,8 +24,7 @@ $(document).ready(function () {
     });
 
     $('#mark').change(function() {
-        console.log(this);
-        console.log('get_all_proposes/get_model_by_mark/?name='+this.value);
+
         $.ajax({
 
             url : 'get_all_proposes/get_model_by_mark',
@@ -43,14 +38,14 @@ $(document).ready(function () {
             dataType: 'json',
 
             success : function(data) {
-                console.log(data);
+
                 var optionModel = $('#model');
 
                 $.each(data, function(index, value) {
+
                     optionModel.append($('<option>').val(value).text(value));
                 });
             }
         });
     });
 });
-

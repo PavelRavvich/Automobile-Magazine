@@ -45,5 +45,10 @@ public interface DAO {
      */
     List<Propose> selectBy(final String mark, final String model);
 
+    /**
+     * Update propose.
+     *
+     * @param propose new state.
+     */
     void update(Propose propose);
 }

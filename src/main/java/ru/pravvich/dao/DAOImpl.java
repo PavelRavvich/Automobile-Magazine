@@ -157,6 +157,11 @@ public class DAOImpl implements DAO {
         }
     }
 
+    /**
+     * Update propose.
+     *
+     * @param propose new state.
+     */
     @Override
     public void update(final Propose propose) {
 

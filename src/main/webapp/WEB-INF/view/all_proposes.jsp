@@ -25,7 +25,7 @@
 </form>
 <hr>
 
-<form method="get" action="...">
+<form method="get" action="get_all_proposes/select_propose_by_markmodel">
 
     <div>
         <select id="mark" name="mark" data-url="get_all_proposes/get_all_marks">
@@ -53,7 +53,7 @@
             <li>Mark: <c:out value="${propose.mark}"/></li>
             <li>Sold: <c:out value="${propose.sold}"/></li>
             <input name="pId" hidden type="number" value="${propose.id}">
-            <a href="get_all_proposes/get_propose_by_id?pId=${propose.id}">More</a>
+            <a href="/get_all_proposes/get_propose_by_id?pId=${propose.id}">More</a>
             <hr>
 
         </ul>

@@ -11,7 +11,7 @@ import ru.pravvich.model.User;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static java.lang.String.format;
+import static ru.pravvich.dao.HQuery.*;
 
 /**
  * Author : Pavel Ravvich.
@@ -34,65 +34,71 @@ public class DAOImpl implements DAO {
         this.factory = factory;
     }
 
+    /**
+     * Get user by login & password.
+     */
     @Override
     public User getUser(final String login, final String password) {
 
-        User result;
-
-        final String hql = format("%s%s", "select u from User u ",
-                "where u.login = :login and u.password = :password");
-
         try (final Session session = factory.get().openSession()) {
 
-            result = session.createQuery(hql, User.class)
+            final List<User> select = session
+                    .createQuery(GET_USER_BY_LOG_PASS.val, User.class)
                     .setParameter("login", login)
                     .setParameter("password", password)
-                    .getSingleResult();
-        }
+                    .list();
 
-        return result;
+            return select.isEmpty() ? new User() : select.get(0);
+        }
     }
 
+    /**
+     * Get propose by Propose id.
+     */
     @Override
     public Propose getProposeById(final int id) {
-
-        Propose result;
 
         try (final Session session = factory.get().openSession()) {
 
             session.beginTransaction();
 
-            result = session.get(Propose.class, id);
+            final Propose result = session.get(Propose.class, id);
 
             Hibernate.initialize(result.getAuhtor());
-        }
 
-        return result;
+            return result;
+        }
     }
 
+    /**
+     * Get all Proposes which contain in database.
+     *
+     * @return all proposes.
+     */
     @Override
     public List<Propose> getAllProposes() {
 
-        List<Propose> result;
-
-        final String query =
-                "select p from Propose p join fetch p.auhtor where p.id > 0";
-
         try (final Session session = factory.get().openSession()) {
 
-            final Query<Propose> id = session.createQuery(query, Propose.class);
+            final Query<Propose> id = session
+                    .createQuery(GET_ALL_PROPOSES.val, Propose.class);
 
             final Transaction transaction = session.beginTransaction();
 
-            result = id.getResultList();
-            transaction.commit();
-        }
+            final List<Propose> result = id.getResultList();
 
-        return result;
+            transaction.commit();
+
+            return result;
+        }
     }
 
+    /**
+     * Addition new propose.
+     */
     @Override
     public void addPropose(final Propose propose) {
+
         try (final Session session = factory.get().openSession()) {
 
             session.beginTransaction();
@@ -103,52 +109,42 @@ public class DAOImpl implements DAO {
         }
     }
 
+    /**
+     * Get all unique marks set.
+     */
     @Override
     public List<String> getMarks() {
 
-        List<String> result;
-
-        final String hq = "select DISTINCT p.mark from Propose p";
-
         try (final Session session = factory.get().openSession()) {
 
-            result = session.createQuery(hq, String.class).getResultList();
-
+            return session.createQuery(GET_ALL_MARKS.val, String.class)
+                    .getResultList();
         }
-
-        return result;
     }
 
+    /**
+     * Get all models corresponded mark of Car.
+     */
     @Override
     public List<String> getModelsByMark(final String mark) {
 
-        List<String> result;
-
-        final String hq =
-                "select DISTINCT p.model from Propose p where p.mark =:mark";
-
         try (final Session session = factory.get().openSession()) {
 
-            result = session.createQuery(hq, String.class)
+            return session.createQuery(GET_MODELS_BY_MARKS.val, String.class)
                     .setParameter("mark", mark)
                     .getResultList();
-
         }
-
-        return result;
     }
 
-    public List<Propose> select(final String mark, final String model) {
-
-        List<Propose> result;
-
-        final String hq = format("%s%s",
-                "select p from Propose p ",
-                "where p.mark =:mark and p.model =:model");
+    /**
+     * Select all propose with valid mark and model.
+     */
+    public List<Propose> selectBy(final String mark, final String model) {
 
         try (Session session = factory.get().openSession()) {
 
-            result = session.createQuery(hq, Propose.class)
+            final List<Propose> result = session
+                    .createQuery(SELECT_BY_MARK_AND_MODEL.val, Propose.class)
                     .setParameter("mark", mark)
                     .setParameter("model", model)
                     .getResultList();
@@ -156,8 +152,8 @@ public class DAOImpl implements DAO {
             result.stream()
                     .map(Propose::getAuhtor)
                     .forEach(Hibernate::initialize);
-        }
 
-        return result;
+            return result;
+        }
     }
 }

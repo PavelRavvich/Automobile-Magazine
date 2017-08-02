@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <form method="post" action="get_all_proposes">
+    <form method="post" action="/get_all_proposes">
 
         <input type="text" name="login">
         <input type="password" name="password">

@@ -10,10 +10,6 @@ import java.util.Set;
 public interface DAO {
     /**
      * Get user by login & password.
-     *
-     * @param login of User.
-     * @param password of User.
-     * @return User with appropriate pair login & password.
      */
     User getUser(String login, String password);
 
@@ -47,5 +43,5 @@ public interface DAO {
     /**
      * Select all propose with valid mark and model.
      */
-    List<Propose> select(final String mark, final String model);
+    List<Propose> selectBy(final String mark, final String model);
 }

@@ -15,7 +15,7 @@
     <br/>
     Description: <input type="text" name="description">
     <br/>
-    File to upload: <input type="file" name="upfile"><br/>
+    Image to upload: <input type="file" name="upfile"><br/>
     <br/>
     <input type="submit" value="Press"> to upload the file!
 </form>

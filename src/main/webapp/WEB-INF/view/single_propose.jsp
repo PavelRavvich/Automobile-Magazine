@@ -7,12 +7,6 @@
 <html>
 <head>
     <title>Title</title>
-    <%--<style type="">--%>
-        <%--<%@include file="" %>--%>
-    <%--</style>--%>
-    <%--<script type="">--%>
-        <%--<%@include file="" %>--%>
-    <%--</script>--%>
     <jsp:useBean id="propose" class="ru.pravvich.model.Propose" scope="page" />
 </head>
 <body>

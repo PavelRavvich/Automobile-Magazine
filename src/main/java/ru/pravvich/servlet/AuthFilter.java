@@ -39,7 +39,6 @@ public class AuthFilter implements Filter {
 
         } else {
 
-            // If user not exist in DB and not have a session go to sign in.
             path = "/index.jsp";
         }
 
@@ -57,9 +56,9 @@ public class AuthFilter implements Filter {
 
         final User user = dao.getUser(login, password);
 
-        if (user != null) createSession(req, user);
+        if (user.getId() != 0) createSession(req, user);
 
-        return user != null;
+        return user.getId() != 0;
     }
 
     private void createSession(final HttpServletRequest req, final User user) {

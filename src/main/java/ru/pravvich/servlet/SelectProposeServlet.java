@@ -22,7 +22,7 @@ public class SelectProposeServlet extends HttpServlet {
 
         final String model = req.getParameter("model");
 
-        final List<Propose> select = dao.select(mark, model);
+        final List<Propose> select = dao.selectBy(mark, model);
 
         req.setAttribute("allProposes", select);
 

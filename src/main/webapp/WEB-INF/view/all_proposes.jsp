@@ -8,13 +8,12 @@
 <head>
     <title>Title</title>
 
+    <%--Jquery connection--%>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
     <script type="text/javascript">
         <%@include file="/WEB-INF/js/propose_filter.js" %>
     </script>
-
-    <%--Jquery connection--%>
-
 </head>
 <body>
 
@@ -46,18 +45,14 @@
 <hr>
 
     <c:forEach var="propose" items="${requestScope.allProposes}">
-
         <ul>
-
             <li>Model: <c:out value="${propose.model}"/></li>
             <li>Mark: <c:out value="${propose.mark}"/></li>
             <li>Sold: <c:out value="${propose.sold}"/></li>
             <input name="pId" hidden type="number" value="${propose.id}">
             <a href="/get_all_proposes/get_propose_by_id?pId=${propose.id}">More</a>
             <hr>
-
         </ul>
-
     </c:forEach>
 
 </body>

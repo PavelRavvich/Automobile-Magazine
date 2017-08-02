@@ -2,7 +2,6 @@ package ru.pravvich.model;
 
 import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
 
 import static org.apache.commons.codec.binary.Base64.encodeBase64;
 

@@ -23,5 +23,11 @@
             <input type="submit"  value="All proposes">
         </form>
 
+        <form method="post" action="/get_all_proposes/get_propose_by_id/change_sold">
+            <input type="number" name="pId" hidden value="${propose.id}">
+            <input type="number" name="aId" hidden value="${propose.auhtor.id}">
+            <input type="submit" value="sold">
+        </form>
+
 </body>
 </html>

@@ -114,4 +114,16 @@
         <servlet-name>SelectProposeByMarkModel</servlet-name>
         <url-pattern>/get_all_proposes/select_propose_by_markmodel</url-pattern>
     </servlet-mapping>
+
+    <!--Change sold status-->
+    <servlet>
+        <servlet-name>ChangeSold</servlet-name>
+        <servlet-class>ru.pravvich.servlet.ChangeSoldServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChangeSold</servlet-name>
+        <url-pattern>/get_all_proposes/get_propose_by_id/change_sold</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //Get marks set.
     $('#mark').focus(function(event) {
 
         $.ajax({
@@ -23,6 +24,7 @@ $(document).ready(function () {
         });
     });
 
+    //Get models set.
     $('#mark').change(function() {
 
         $.ajax({

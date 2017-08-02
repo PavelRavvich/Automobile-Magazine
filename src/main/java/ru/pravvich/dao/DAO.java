@@ -44,4 +44,6 @@ public interface DAO {
      * Select all propose with valid mark and model.
      */
     List<Propose> selectBy(final String mark, final String model);
+
+    void update(Propose propose);
 }

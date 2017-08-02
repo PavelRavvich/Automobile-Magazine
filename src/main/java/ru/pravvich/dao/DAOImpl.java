@@ -156,4 +156,17 @@ public class DAOImpl implements DAO {
             return result;
         }
     }
+
+    @Override
+    public void update(final Propose propose) {
+
+        try (Session session = factory.get().openSession()) {
+
+            session.beginTransaction();
+
+            session.update(propose);
+
+            session.getTransaction().commit();
+        }
+    }
 }

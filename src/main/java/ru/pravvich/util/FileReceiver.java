@@ -5,8 +5,17 @@ import org.apache.commons.fileupload.FileItem;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Receive file data from list FileItem.
+ */
 public class FileReceiver {
 
+    /**
+     * Receive file data.
+     *
+     * @param items common data file with test.
+     * @return file in byte[] format.
+     */
     public byte[] receive(final List<FileItem> items) {
 
         final List<Byte> entire = new ArrayList<>();

@@ -8,7 +8,7 @@ import ru.pravvich.model.Propose;
 import ru.pravvich.model.User;
 import ru.pravvich.util.FileReceiver;
 import ru.pravvich.util.TextReceiver;
-import ru.pravvich.util.UploadFactory;
+import ru.pravvich.util.Uploader;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Servlet for parse request and addition propose to database.
+ */
 public class AddProposeServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -28,7 +31,7 @@ public class AddProposeServlet extends HttpServlet {
         // Current
         final ServletConfig config = this.getServletConfig();
 
-        final ServletFileUpload upload = new UploadFactory().get(config);
+        final ServletFileUpload upload = new Uploader().get(config);
 
         // Set overall request size constraint
         upload.setSizeMax(10_000_000);
@@ -57,6 +60,9 @@ public class AddProposeServlet extends HttpServlet {
         }
     }
 
+    /**
+     * Get Auhtor id from request.
+     */
     private int getAuthorId(HttpServletRequest req) {
         final HttpSession session = req.getSession(false);
         return (int) session.getAttribute("id");

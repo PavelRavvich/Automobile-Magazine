@@ -11,6 +11,9 @@ import java.io.IOException;
 
 import static java.util.Objects.nonNull;
 
+/**
+ * Auntification filter.
+ */
 public class AuthFilter implements Filter {
     public void destroy() {
     }
@@ -45,6 +48,13 @@ public class AuthFilter implements Filter {
         req.getRequestDispatcher(path).forward(req, resp);
     }
 
+    /**
+     * Check exist user in database by login and password.
+     * If user is exist call this.createSession(HttpServletRequest, User)
+     *
+     * @param req current request.
+     * @return true - exist, false not exist.
+     */
     private boolean userIsRegisteredDB(final HttpServletRequest req) {
 
         final String login = req.getParameter("login");
@@ -61,6 +71,13 @@ public class AuthFilter implements Filter {
         return user.getId() != 0;
     }
 
+    /**
+     * Create HttpSession for current user.
+     * Inject in session id, login, password of user.
+     *
+     * @param req current request.
+     * @param user current user.
+     */
     private void createSession(final HttpServletRequest req, final User user) {
 
         final HttpSession session = req.getSession();
@@ -70,7 +87,12 @@ public class AuthFilter implements Filter {
         session.setAttribute("password", user.getPassword());
     }
 
-
+    /**
+     * Check exist login and password in session.
+     *
+     * @param session current request.
+     * @return true if exist, else - false.
+     */
     private boolean sessionIsExist(final HttpSession session) {
 
         final String loginSes = (String) session.getAttribute("login");

@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Select all exist proposes and send to view.
+ */
 public class AllProposesServlet extends HttpServlet {
 
     @Override

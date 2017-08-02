@@ -11,6 +11,9 @@ import java.io.IOException;
 
 import static java.lang.Integer.parseInt;
 
+/**
+ * Change propose sold status.
+ */
 public class ChangeSoldServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -20,7 +23,7 @@ public class ChangeSoldServlet extends HttpServlet {
 
         final int current = (int) req.getSession().getAttribute("id");
 
-
+        //Check auhtor propose.
         if (current == auhtorId) changeSoldStatus(req);
 
         req.getRequestDispatcher("/get_all_proposes")

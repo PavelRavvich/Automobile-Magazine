@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Author : Pavel Ravvich.
  * Created : 24.07.17.
  * <p>
- * ContextListener
+ * ContextListener injection dao object to servlet context.
  */
 @WebListener
 public class ContextListener implements ServletContextListener {

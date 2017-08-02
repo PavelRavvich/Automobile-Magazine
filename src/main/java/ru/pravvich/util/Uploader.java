@@ -7,10 +7,18 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import java.io.File;
 
-public class UploadFactory {
-
+/**
+ * Util for get ServletFileUpload instance.
+ */
+public class Uploader {
+    /**
+     * Determites temp directory.
+     */
     private static final String tmp = "javax.servlet.context.tempdir";
 
+    /**
+     * Get ServletFileUpload for parse request included file.
+     */
     public ServletFileUpload get(final ServletConfig config) {
 
         // Create a factory for disk-based file items

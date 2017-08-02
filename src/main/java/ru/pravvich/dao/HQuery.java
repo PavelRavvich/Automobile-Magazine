@@ -1,5 +1,8 @@
 package ru.pravvich.dao;
 
+/**
+ * Contain all hql requests.
+ */
 public enum HQuery {
     GET_USER_BY_LOG_PASS("select u from User u where u.login = :login and u.password = :password"),
     SELECT_BY_MARK_AND_MODEL("select p from Propose p where p.mark =:mark and p.model =:model"),

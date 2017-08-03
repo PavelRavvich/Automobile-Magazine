@@ -1,27 +1,25 @@
 $(document).ready(function () {
     //Get marks set.
-    $('#mark').focus(function(event) {
+    $.ajax({
 
-        $.ajax({
+        url: 'get_all_proposes/get_all_marks',
 
-            url : 'get_all_proposes/get_all_marks',
+        type: 'get',
 
-            type : 'get',
+        dataType: 'json',
 
-            dataType: 'json',
 
-            success: function (data) {
+        success: function (data) {
 
-                var select = $('#mark');
+            var select = $('#mark');
 
-                $.each(data, function(index, value) {
+            $.each(data, function (index, value) {
 
-                    var optionMark = $('<option>');
+                var optionMark = $('<option>');
 
-                    optionMark.val(value).text(value).appendTo(select);
-                });
-            }
-        });
+                optionMark.val(value).text(value).appendTo(select);
+            });
+        }
     });
 
     //Get models set.

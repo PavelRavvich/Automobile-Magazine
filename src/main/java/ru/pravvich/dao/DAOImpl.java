@@ -80,7 +80,7 @@ public class DAOImpl implements DAO {
 
             final Propose result = session.get(Propose.class, id);
 
-            Hibernate.initialize(result.getAuhtor());
+            if (result != null) Hibernate.initialize(result.getAuhtor());
 
             return result;
         }

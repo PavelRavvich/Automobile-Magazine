@@ -51,4 +51,9 @@ public interface DAO {
      * @param propose new state.
      */
     void update(Propose propose);
+
+    /**
+     * Addition user to table users.
+     */
+    void addUser(User user);
 }

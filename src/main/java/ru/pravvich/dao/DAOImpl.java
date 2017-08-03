@@ -35,6 +35,22 @@ public class DAOImpl implements DAO {
     }
 
     /**
+     * Addition user to table users.
+     */
+    @Override
+    public void addUser(final User user) {
+
+        try (final Session session = factory.get().openSession()) {
+
+            session.beginTransaction();
+
+            session.save(user);
+
+            session.getTransaction().commit();
+        }
+    }
+
+    /**
      * Get user by login & password.
      */
     @Override

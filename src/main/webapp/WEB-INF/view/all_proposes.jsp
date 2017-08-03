@@ -19,21 +19,21 @@
 
 <h2>All Proposes: </h2><br>
 
-<form method="get" action="get_all_proposes/add_propose">
+<form method="get" action="/get_all_proposes/add_propose">
     <input type="submit" value="Add propose">
 </form>
 <hr>
 
-<form method="get" action="get_all_proposes/select_propose_by_markmodel">
+<form method="get" action="/get_all_proposes/select_propose_by_markmodel">
 
     <div>
-        <select id="mark" name="mark" data-url="get_all_proposes/get_all_marks">
+        <select id="mark" name="mark" data-url="/get_all_proposes/get_all_marks">
             <option value="">Select mark</option>
         </select>
     </div>
 
     <div>
-        <select id="model" name="model" data-url="get_all_proposes/get_model_by_mark">
+        <select id="model" name="model" data-url="/get_all_proposes/get_model_by_mark">
             <option value="">Select model</option>
         </select>
     </div>

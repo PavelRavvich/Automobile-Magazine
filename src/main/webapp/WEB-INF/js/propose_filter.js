@@ -2,7 +2,7 @@ $(document).ready(function () {
     //Get marks set.
     $.ajax({
 
-        url: 'get_all_proposes/get_all_marks',
+        url: '/get_all_proposes/get_all_marks',
 
         type: 'get',
 
@@ -27,7 +27,7 @@ $(document).ready(function () {
 
         $.ajax({
 
-            url : 'get_all_proposes/get_model_by_mark',
+            url : '/get_all_proposes/get_model_by_mark',
 
             type : 'get',
 

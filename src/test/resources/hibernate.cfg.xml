@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
     <session-factory>
-        <property name="connection.url">jdbc:hsqldb:mem:auto_mag;sql.enforce_size=false</property>
+        <property name="connection.url">jdbc:hsqldb:mem;sql.enforce_size=false</property>
         <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"></property>
         <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
         <property name="show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping resource="ru/pravvich/model/User.hbm.xml" />
         <mapping resource="ru/pravvich/model/Propose.hbm.xml" />

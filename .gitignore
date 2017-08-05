@@ -7,6 +7,7 @@ com
 */target
 */*/target
 target
+mem.*
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

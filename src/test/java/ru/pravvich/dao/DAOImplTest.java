@@ -6,14 +6,12 @@ import org.junit.*;
 import ru.pravvich.model.Propose;
 import ru.pravvich.model.User;
 
-import java.util.concurrent.atomic.AtomicReference;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class DAOImplTest {
 
-    private AtomicReference<SessionFactory> fac;
+    private SessionFactory fac;
     private DAO dao;
 
     private final User user = new User("test", "test");
@@ -23,16 +21,14 @@ public class DAOImplTest {
 
     @Before
     public void before() {
-        fac = new AtomicReference<>(
-                new Configuration().configure().buildSessionFactory()
-        );
+        fac = new Configuration().configure().buildSessionFactory();
 
         dao = new DAOImpl(fac);
     }
 
     @After
     public void after() {
-        fac.get().close();
+        fac.close();
     }
 
     @Test

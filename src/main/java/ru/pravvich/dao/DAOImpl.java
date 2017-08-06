@@ -9,7 +9,6 @@ import ru.pravvich.model.Propose;
 import ru.pravvich.model.User;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static ru.pravvich.dao.HQuery.*;
 
@@ -23,14 +22,14 @@ public class DAOImpl implements DAO {
     /**
      * Connection factory to database.
      */
-    private final AtomicReference<SessionFactory> factory;
+    private final SessionFactory factory;
 
     /**
      * Default constructor.
      *
      * @param factory of connection to database.
      */
-    public DAOImpl(final AtomicReference<SessionFactory> factory) {
+    public DAOImpl(final SessionFactory factory) {
         this.factory = factory;
     }
 
@@ -40,7 +39,7 @@ public class DAOImpl implements DAO {
     @Override
     public void addUser(final User user) {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             session.beginTransaction();
 
@@ -56,7 +55,7 @@ public class DAOImpl implements DAO {
     @Override
     public User getUser(final String login, final String password) {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             final List<User> select = session
                     .createQuery(GET_USER_BY_LOG_PASS.val, User.class)
@@ -74,7 +73,7 @@ public class DAOImpl implements DAO {
     @Override
     public Propose getProposeById(final int id) {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             session.beginTransaction();
 
@@ -94,7 +93,7 @@ public class DAOImpl implements DAO {
     @Override
     public List<Propose> getAllProposes() {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             final Query<Propose> id = session
                     .createQuery(GET_ALL_PROPOSES.val, Propose.class);
@@ -115,7 +114,7 @@ public class DAOImpl implements DAO {
     @Override
     public void addPropose(final Propose propose) {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             session.beginTransaction();
 
@@ -131,7 +130,7 @@ public class DAOImpl implements DAO {
     @Override
     public List<String> getMarks() {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             return session.createQuery(GET_ALL_MARKS.val, String.class)
                     .getResultList();
@@ -144,7 +143,7 @@ public class DAOImpl implements DAO {
     @Override
     public List<String> getModelsByMark(final String mark) {
 
-        try (final Session session = factory.get().openSession()) {
+        try (final Session session = factory.openSession()) {
 
             return session.createQuery(GET_MODELS_BY_MARKS.val, String.class)
                     .setParameter("mark", mark)
@@ -157,7 +156,7 @@ public class DAOImpl implements DAO {
      */
     public List<Propose> selectBy(final String mark, final String model) {
 
-        try (Session session = factory.get().openSession()) {
+        try (Session session = factory.openSession()) {
 
             final List<Propose> result = session
                     .createQuery(SELECT_BY_MARK_AND_MODEL.val, Propose.class)
@@ -181,7 +180,7 @@ public class DAOImpl implements DAO {
     @Override
     public void update(final Propose propose) {
 
-        try (Session session = factory.get().openSession()) {
+        try (Session session = factory.openSession()) {
 
             session.beginTransaction();
 

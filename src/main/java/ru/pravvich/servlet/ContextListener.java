@@ -25,7 +25,7 @@ public class ContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
-        final DAOImpl dao = new DAOImpl(new AtomicReference<>(factory));
+        final DAOImpl dao = new DAOImpl(factory);
 
         sce.getServletContext().setAttribute("dao", dao);
     }
